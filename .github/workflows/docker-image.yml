@@ -29,10 +29,12 @@ jobs:
     - name: Build docker image
       run: |
         docker build -t minichii/docker-graphql:0.0.1 .
+        docker build -t minichii/docker-graphql:latest .
         
     - name: Push docker image
       run: |
         docker push minichii/docker-graphql:0.0.1
+        docker push minichii/docker-graphql:latest
     
 
         
