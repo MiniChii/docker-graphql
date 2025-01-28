@@ -32,7 +32,7 @@ jobs:
         
     - name: Push docker image
       run: |
-        docker push minichii minichii/docker-graphq:0.0.1
+        docker push minichii/docker-graphq:0.0.1
     
 
         
