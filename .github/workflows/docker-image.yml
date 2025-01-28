@@ -32,9 +32,9 @@ jobs:
       id: version
       uses: PaulHatch/semantic-version@v5.4.0
       with:
-        major_pattern: "mayor" 
-        minor_pattern: "feat" 
-        format: "${major}.${minor}.${patch}"
+        major_pattern: "mayor:" 
+        minor_pattern: "feat:" 
+        format: "${major}.${minor}.${patch}-prerelease${increment}"
 
     # - name: Build docker image
     #   run: |
