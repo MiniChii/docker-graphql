@@ -21,20 +21,30 @@ jobs:
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
-        echo "Iniciando login"
+
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "Fin login"
-
-    - name: Build docker image
-      run: |
-        docker build -t minichii/docker-graphql:0.0.1 .
-        docker build -t minichii/docker-graphql:latest .
+        echo "_________________ New version: $NEW_VERSION!!"
         
-    - name: Push docker image
-      run: |
-        docker push minichii/docker-graphql:0.0.1
-        docker push minichii/docker-graphql:latest
+    - name: Git Semantic Version
+      id: version
+      uses: PaulHatch/semantic-version@v5.4.0
+      with:
+        major_pattern: "mayor" 
+        minor_pattern: "feat" 
+        format: "${major}.${minor}.${patch}
+
+    # - name: Build docker image
+    #   run: |
+    #     docker build -t minichii/docker-graphql:0.0.1 .
+    #     docker build -t minichii/docker-graphql:latest .
+        
+    # - name: Push docker image
+    #   run: |
+    #     docker push minichii/docker-graphql:0.0.1
+    #     docker push minichii/docker-graphql:latest
     
 
         
