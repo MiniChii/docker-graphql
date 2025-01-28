@@ -34,7 +34,7 @@ jobs:
       with:
         major_pattern: "mayor" 
         minor_pattern: "feat" 
-        format: "${major}.${minor}.${patch}
+        format: "${major}.${minor}.${patch}"
 
     # - name: Build docker image
     #   run: |
